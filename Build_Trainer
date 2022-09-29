@@ -1,0 +1,42 @@
+# syntax=docker/dockerfile:1
+#
+# =======================================
+# | AUTISM CLASSIFICATION MODEL TRAINER |
+# =======================================
+# 
+# This Dockerfile is used to build model trainer for Autism Classification.
+# 
+# Quick Command to Build Trainer
+# ==============================
+# docker build -t autism_classification:trainer -f Build_Trainer .
+#
+# Quick Command to Run Trainer
+# ============================
+# docker run --rm -it --gpus all \
+#     -v [ Required: Your Path to Data Directory ]:/data \
+#     -v [ Required / Optional: Your Directory Path to Save Output Files ]:/resources \
+#     autism_classification:trainer [ Your Arguments ]
+#
+# Main Build Script
+# =================
+#
+# Pull pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime Image from Docker-Hub
+FROM pytorch/pytorch@sha256:0bc0971dc8ae319af610d493aced87df46255c9508a8b9e9bc365f11a56e7b75
+# Install Necessary Packages
+RUN pip3 install --no-cache-dir matplotlib==3.5.3
+RUN pip3 install --no-cache-dir pandas==1.3.5
+RUN pip3 install --no-cache-dir seaborn==0.10.1
+RUN pip3 install --no-cache-dir scikit-learn==1.0.2
+# Copy Resources to Respective Directories
+RUN mkdir /data
+RUN mkdir /resources
+RUN mkdir -p /root/.cache/torch/hub/checkpoints/
+COPY ./Resources/resnet50-11ad3fa6.pth /root/.cache/torch/hub/checkpoints/resnet50-11ad3fa6.pth
+WORKDIR /workspace
+# Copy Trainer Files for Execution
+COPY ./Trainer/trainer.py ./trainer.py
+# Copy Model File
+COPY ./model.py ./model.py
+# Set Permissions & Create Execution Entrypoint
+RUN chmod 777 ./trainer.py
+ENTRYPOINT [ "./trainer.py" ]
