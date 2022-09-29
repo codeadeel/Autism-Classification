@@ -336,6 +336,11 @@ if __name__ == '__main__':
     parser.add_argument('-btch', '--batch_size', type = int, help = 'Batch Size to Create Base Cluster Embeddings', default = 32)
     parser.add_argument('-data', '--base_data', type = str, help = 'Absolute Address of Base Clustering Data Directory', default = '/data')
     args = vars(parser.parse_args())
+    print("""
+    ==========================================
+    | Autism Classification Inference Server |
+    ==========================================
+    """)
     ser = Inference(args['resources'], args['sim_thres'], args['batch_size'], args['base_data'])
     print(ser)
     app.run(host='0.0.0.0', port=8080)
