@@ -2,7 +2,7 @@
 
 ![Autism Classification Macro Architecture][macro_architecture]
 
-The subject repository is responsible for Autism Classification. The subject architecture is trained autistic children dataset. Currently inference architecture supports two modes for classification.
+The subject repository is responsible for Autism Classification. The subject architecture is trained on autistic children dataset. Currently inference architecture supports two modes for classification.
 
 * Classification using classification layer
 * Classification using one shot learning
