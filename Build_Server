@@ -15,7 +15,7 @@
 # docker run --rm -it --gpus all \
 #     -v [ Required: Your Directory Path to Save Output Files ]:/resources \
 #     -v [ Required: Your Path to Base Data Directory ]:/data \
-#     -p [ Your Port to Expose Server ]:1234 \
+#     -p [ Your Port to Expose Server ]:8080 \
 #     autism_classification:server [ Your Arguments ]
 #
 # Main Build Script

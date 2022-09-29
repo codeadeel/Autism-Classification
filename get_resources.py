@@ -10,6 +10,7 @@
 
 # %%
 # Importing Libraries
+import os
 import gdown
 
 # %%
@@ -27,6 +28,10 @@ dlinks = {
 # Download Execution
 
 download_addr = '/'.join(__file__.split('/')[:-1]) + '/Resources'
+os.mkdir(download_addr)
+os.mkdir(f'{download_addr}/pretrained')
+os.mkdir(f'{download_addr}/pretrained/logs')
+os.mkdir(f'{download_addr}/pretrained/models')
 
 for keys, vals in dlinks.items():
     gdown.download(vals, f'{download_addr}/{keys}', quiet=False, fuzzy=True)
