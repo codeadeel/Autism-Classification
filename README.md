@@ -1,4 +1,5 @@
 # Autism Classification
+![DockerHub CI][dockerBadge]
 
 ![Autism Classification Macro Architecture][macro_architecture]
 
@@ -18,4 +19,5 @@ The model used in this architecture is ***ResNet-50***, trained on subject data 
 
 ##### For extensive documentation, please check [***wiki***](https://github.com/codeadeel/Autism-Classification/wiki).
 
+[dockerBadge]: https://github.com/codeadeel/Autism-Classification/actions/workflows/dockerPush.yml/badge.svg?event=push
 [macro_architecture]: ./MarkDown-Data/macro_architecture.jpg
