@@ -16,10 +16,12 @@ jobs:
     steps:
     - name: main Branch Checkout
       uses: actions/checkout@v3
-    - name: Install gdown
-      run: pip3 install gdown
-    - name: Download Resources
-      run: python3 ./get_resources.py
+    
+    - name: Make Resources Directory
+      run: mkdir ./Resources
+    - name: Download Model Resources
+      run: wget -O ./Resources/resnet50-11ad3fa6.pth https://storage.googleapis.com/codeadeel-github/Autism-Classification/resnet50-11ad3fa6.pth
+
     - name: Docker Login
       run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASSWORD}}
       
